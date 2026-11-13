@@ -1,0 +1,13 @@
+{
+  "name": "leonida-verification-desk",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Launch-day marker verification for the GTA 6 community maps. Records what each community map marker turned out to be: confirmed, corrected, or debunked.",
+  "license": "MIT",
+  "scripts": {
+    "ingest": "python3 ingest.py --register",
+    "corrections": "python3 ingest.py --corrections",
+    "dev": "python3 -m http.server 5173"
+  },
+  "engines": { "node": ">=18" }
+}

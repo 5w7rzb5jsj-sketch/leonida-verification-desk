@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Verification Desk — marker accuracy for the GTA 6 community maps</title>
+<meta name="description" content="Community map markers for GTA 6 were traced from trailers. Launch day makes them checkable. We record what each one turned out to be: confirmed, corrected, or debunked.">
+<meta property="og:title" content="Leonida Verification Desk">
+<meta property="og:description" content="Which community map markers survived contact with the real game.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230b0b0f'/%3E%3Cpath d='M22 68V32h10l9 22 9-22h10v36h-8V46l-7 18h-8l-7-18v22z' fill='%23ff5c8a'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#0b0b0f; --ink2:#15151c; --line:#26262f;
+    --paper:#f6f5f2; --muted:#8b8b99; --text:#e9e8e4;
+    --hot:#ff5c8a; --sun:#ffc247; --ok:#4ec98a; --warn:#ffb03a; --bad:#ff6b6b; --grey:#7d7d8c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--text);
+    font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  header{border-bottom:1px solid var(--line);position:sticky;top:0;
+    background:rgba(11,11,15,.86);backdrop-filter:blur(12px);z-index:20}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
+  .dot{width:9px;height:9px;border-radius:50%;background:var(--hot);
+    box-shadow:0 0 0 4px rgba(255,92,138,.16)}
+  .nav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+  .nav a:hover{color:var(--text)}
+  .hero{padding:84px 0 56px;border-bottom:1px solid var(--line);
+    background:radial-gradient(120% 90% at 15% -10%,rgba(255,92,138,.16),transparent 60%),
+               radial-gradient(90% 80% at 95% 0%,rgba(255,194,71,.10),transparent 55%)}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--sun);border:1px solid var(--line);
+    border-radius:999px;padding:6px 14px;background:rgba(255,194,71,.06)}
+  h1{font-size:clamp(38px,6.2vw,68px);line-height:1.02;letter-spacing:-.035em;
+    margin:22px 0 20px;font-weight:800}
+  h1 em{font-style:normal;color:var(--hot)}
+  .lede{font-size:clamp(17px,2.1vw,21px);color:#c9c8c2;max-width:60ch}
+  .lede strong{color:var(--text)}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;
+    font-weight:650;font-size:15px;text-decoration:none;border:1px solid var(--line);transition:.16s}
+  .btn.p{background:var(--hot);color:#12060b;border-color:transparent}
+  .btn.p:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn.s{background:transparent;color:var(--text)}
+  .btn.s:hover{border-color:var(--muted);background:var(--ink2)}
+  section{padding:72px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:clamp(25px,3.4vw,36px);letter-spacing:-.03em;margin-bottom:14px;font-weight:750}
+  .sub{color:var(--muted);max-width:62ch;margin-bottom:36px}
+  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+  .tile{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .tile .n{font-size:34px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .tile .l{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
+  .tile.hot .n{color:var(--hot)}
+  .tile.sun .n{color:var(--sun)}
+  .tile.ok .n{color:var(--ok)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}.nav{display:none}}
+  .card{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .card h3{font-size:17px;margin-bottom:10px;font-weight:700}
+  .card p{color:var(--muted);font-size:15px}
+  .vt{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
+  @media(max-width:860px){.vt{grid-template-columns:1fr 1fr}}
+  .v{border-radius:12px;padding:16px;border:1px solid var(--line);background:var(--ink2)}
+  .v .vn{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;margin-bottom:7px}
+  .sw{width:10px;height:10px;border-radius:3px}
+  .v p{font-size:13px;color:var(--muted);line-height:1.5}
+  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  td.num{text-align:right;font-variant-numeric:tabular-nums}
+  code{background:#1d1d26;border:1px solid var(--line);border-radius:6px;
+    padding:2px 7px;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  pre{background:#0e0e14;border:1px solid var(--line);border-radius:12px;padding:16px;
+    overflow:auto;font-size:13px;line-height:1.55;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfcfd8}
+  .pill{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  footer{padding:44px 0 64px;color:var(--muted);font-size:13px}
+  footer p{max-width:76ch;margin-bottom:10px}
+  .rule{border-left:2px solid var(--warn);padding-left:16px;color:#cbbfa4;
+    background:rgba(255,176,58,.05);border-radius:0 8px 8px 0;padding:14px 16px}
+  .empty{color:var(--muted);font-style:italic;padding:20px 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand"><span class="dot"></span>Leonida Verification Desk</div>
+    <nav class="nav">
+      <a href="#method">Method</a>
+      <a href="#tally">Tally</a>
+      <a href="#data">Data</a>
+      <a href="#licence">Licence</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="kicker">Launch: 19 November 2026</span>
+    <h1>Every community map marker<br>was a <em>guess</em>. Now we find out.</h1>
+    <p class="lede">Leonida's community maps were traced by hand from trailers and
+      screenshots. On launch day the game ships and every one of those markers becomes
+      checkable against the real thing. <strong>This desk records which ones survived.</strong>
+      Confirmed, corrected, or debunked — with the evidence, per marker.</p>
+    <div class="cta">
+      <a class="btn p" href="#data">Read the dataset</a>
+      <a class="btn s" href="#method">How verification works</a>
+    </div>
+  </div>
+</div>
+
+<section id="method">
+  <div class="wrap">
+    <h2>The gap nobody is filling</h2>
+    <p class="sub">There are more than twenty GTA 6 map sites in the wild, and almost all of
+      them published their marker set before the game existed. When the game arrives,
+      those markers are either right or wrong — and no one is keeping score. Verification
+      is unglamorous work that produces the one thing the whole ecosystem lacks:
+      a record of its own accuracy.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>What we check</h3>
+        <p>Each marker in the register gets one verdict, one piece of evidence, and where
+          it was wrong, a measured position error in metres against the community's
+          own coordinate system.</p>
+      </div>
+      <div class="card">
+        <h3>What it produces</h3>
+        <p>A per-marker correction record — publishable, licensable, and useful to the map
+          sites themselves, because a corrected marker is a map that stops embarrassing
+          its readers.</p>
+      </div>
+    </div>
+    <div class="vt">
+      <div class="v"><div class="vn"><span class="sw" style="background:var(--ok)"></span>Confirmed</div>
+        <p>Marker is where and what the community said it was.</p></div>
+      <div class="v"><div class="vn"><span class="sw" style="background:var(--warn)"></span>Corrected</div>
+        <p>Real, but the position or description was wrong. Fix recorded.</p></div>
+      <div class="v"><div class="vn"><span class="sw" style="background:var(--bad)"></span>Debunked</div>
+        <p>No such place exists in the shipping game.</p></div>
+      <div class="v"><div class="vn"><span class="sw" style="background:var(--grey)"></span>Inconclusive</div>
+        <p>Could not reach or could not tell. Not scored as a failure.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="tally">
+  <div class="wrap">
+    <h2>The tally</h2>
+    <p class="sub">Live from the register. Every figure below is computed, never typed —
+      and it stays blank rather than guessing when nothing has been checked yet.</p>
+    <div id="tallyTiles" class="tiles">
+      <div class="tile hot"><div class="n" id="t_reg">—</div><div class="l">Markers registered</div></div>
+      <div class="tile sun"><div class="n" id="t_chk">—</div><div class="l">Checked against the game</div></div>
+      <div class="tile"><div class="n" id="t_acc">—</div><div class="l">Pre-launch accuracy</div></div>
+      <div class="tile"><div class="n" id="t_err">—</div><div class="l">Mean position error (m)</div></div>
+    </div>
+    <div style="margin-top:34px">
+      <span class="pill" id="t_state">loading</span>
+    </div>
+    <div id="tallyTable"></div>
+  </div>
+</section>
+
+<section id="data">
+  <div class="wrap">
+    <h2>The dataset</h2>
+    <p class="sub">Machine-readable, no key, no sign-up. Attribution is required by the
+      licence and is embedded in the payloads themselves, so a consumer that strips the
+      page still carries the credit.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>Register</h3>
+        <p>Every marker in the verification register, in the columns the desk uses.</p>
+        <pre id="regPreview">loading…</pre>
+        <p style="margin-top:12px"><a class="btn s" href="data/register.json">data/register.json</a></p>
+      </div>
+      <div class="card">
+        <h3>Corrections</h3>
+        <p>The publishable output: verdicts, accuracy, correction rate and the per-marker
+          correction list.</p>
+        <pre id="corPreview">loading…</pre>
+        <p style="margin-top:12px"><a class="btn s" href="data/corrections.json">data/corrections.json</a></p>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>Rebuild it from source</h3>
+      <p style="margin-bottom:14px">The register is generated, not hand-written. Pull the
+        licensed community datasets and regenerate both payloads:</p>
+      <pre>python3 ingest.py --register
+python3 ingest.py --corrections</pre>
+    </div>
+  </div>
+</section>
+
+<section id="licence">
+  <div class="wrap">
+    <h2>Licence and attribution</h2>
+    <p class="sub">This desk is built on other people's cartography, used under the terms
+      they set. Credit is not optional.</p>
+    <table>
+      <thead><tr><th>Dataset</th><th>Publisher</th><th>Licence</th><th class="num">Records</th></tr></thead>
+      <tbody id="srcRows"></tbody>
+    </table>
+    <div class="rule" style="margin-top:26px">
+      Community cartography is published under CC BY 4.0, which permits commercial reuse
+      with attribution. <strong>Rockstar Games artwork, trailers, screenshots and the
+      official Leonida map are not covered by that licence</strong> and are not
+      redistributed here. Marker coordinates are community estimates, not official data.
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Leonida Verification Desk</strong> is an independent project. It is not
+      affiliated with, endorsed by, sponsored by or associated with Rockstar Games,
+      Take-Two Interactive or any of their subsidiaries. "Grand Theft Auto", "GTA",
+      "Vice City" and "Rockstar" are trademarks of their respective owners, used here
+      for identification and commentary only.</p>
+    <p id="genline"></p>
+  </div>
+</footer>
+
+<script>
+const fmt = n => (n === null || n === undefined) ? "—" : n.toLocaleString("en-US");
+const pct = n => (n === null || n === undefined) ? "—" : (n * 100).toFixed(1) + "%";
+
+async function load(){
+  let reg = null, cor = null;
+  try { reg = await (await fetch("data/register.json")).json(); } catch(e){}
+  try { cor = await (await fetch("data/corrections.json")).json(); } catch(e){}
+
+  const marks = cor ? cor.markers_registered : (reg ? reg.count : null);
+  document.getElementById("t_reg").textContent = fmt(marks);
+  document.getElementById("t_chk").textContent = cor ? fmt(cor.markers_checked) : "—";
+  document.getElementById("t_acc").textContent = cor ? pct(cor.prelaunch_accuracy) : "—";
+  document.getElementById("t_err").textContent =
+    (cor && cor.mean_position_error_m !== null) ? fmt(cor.mean_position_error_m) : "—";
+
+  const state = document.getElementById("t_state");
+  if (cor && cor.markers_checked > 0){
+    state.textContent = "verified · " + cor.markers_checked + " of " + cor.markers_registered + " markers checked";
+  } else {
+    state.textContent = "register seeded · verification begins at launch";
+  }
+
+  const t = document.getElementById("tallyTable");
+  if (cor){
+    const v = cor.verdicts;
+    t.innerHTML = `<table><thead><tr><th>Verdict</th><th class="num">Markers</th>
+      <th class="num">Share of checked</th></tr></thead><tbody>
+      ${["Confirmed","Corrected","Debunked","Inconclusive"].map(k => {
+        const share = cor.markers_checked ? (v[k]/cor.markers_checked) : null;
+        return `<tr><td>${k}</td><td class="num">${fmt(v[k])}</td><td class="num">${pct(share)}</td></tr>`;
+      }).join("")}
+      </tbody></table>`;
+  }
+
+  const c = document.getElementById("corPreview");
+  if (c) c.textContent = cor ? JSON.stringify({
+    markers_registered: cor.markers_registered,
+    markers_checked: cor.markers_checked,
+    verdicts: cor.verdicts,
+    prelaunch_accuracy: cor.prelaunch_accuracy,
+    correction_rate: cor.correction_rate,
+    mean_position_error_m: cor.mean_position_error_m
+  }, null, 2) : "unavailable";
+
+  const r = document.getElementById("regPreview");
+  if (r) r.textContent = reg ? JSON.stringify({
+    generated: reg.generated, count: reg.count,
+    schema: reg.schema, attribution: reg.attribution
+  }, null, 2) : "unavailable";
+
+  const sources = [
+    {d:"GTA VI Landmarks Data & map tiles", p:"gtadb.org", l:"CC BY 4.0", n:"2,198"},
+    {d:"GTA 6 map points", p:"mapheist.com", l:"CC BY 4.0", n:"94"},
+    {d:"Weekly GTA data feed", p:"grindmap.com", l:"CC BY 4.0", n:"—"}
+  ];
+  document.getElementById("srcRows").innerHTML = sources.map(s =>
+    `<tr><td>${s.d}</td><td>${s.p}</td><td><code>${s.l}</code></td><td class="num">${s.n}</td></tr>`
+  ).join("");
+
+  const g = (cor && cor.generated) || (reg && reg.generated);
+  if (g) document.getElementById("genline").textContent = "Register generated " + g + " UTC.";
+}
+load();
+</script>
+</body>
+</html>

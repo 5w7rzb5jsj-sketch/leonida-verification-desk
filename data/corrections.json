@@ -1,0 +1,17 @@
+{
+  "generated": "2026-11-13T00:00:00+00:00",
+  "source_register_generated": "2026-11-13T00:00:00+00:00",
+  "markers_registered": 6,
+  "markers_checked": 0,
+  "still_to_check": 6,
+  "verdicts": {"Confirmed": 0, "Corrected": 0, "Debunked": 0, "Inconclusive": 0},
+  "prelaunch_accuracy": null,
+  "correction_rate": null,
+  "mean_position_error_m": null,
+  "corrections": [],
+  "attribution": [
+    "GTA VI Landmarks Data and GTA VI Map Tiles \u2014 GTADB / Map GTA (gtadb.org), CC BY 4.0",
+    "GTA 6 map points \u2014 mapheist.com, CC BY 4.0",
+    "Weekly GTA data feed \u2014 GrindMap (grindmap.com), CC BY 4.0"
+  ]
+}
