@@ -1,19 +1,17 @@
 {
-  "generated": "2026-11-13T00:00:00+00:00",
+  "generated": "2026-11-16T00:00:00+00:00",
   "schema": ["id","kind","region","game_name","real_place","confidence_pre","leonida_x","leonida_y","checked","verdict","pos_error_m","evidence","correct_value","source_dataset","source_licence"],
-  "count": 6,
+  "count": 49,
   "attribution": [
     "GTA VI Landmarks Data and GTA VI Map Tiles \u2014 GTADB / Map GTA (gtadb.org), CC BY 4.0",
     "GTA 6 map points \u2014 mapheist.com, CC BY 4.0",
     "Weekly GTA data feed \u2014 GrindMap (grindmap.com), CC BY 4.0"
   ],
   "licence_note": "Community cartography is CC BY 4.0: commercial reuse permitted with attribution. Rockstar Games artwork, trailers and screenshots are NOT covered by that licence and must not be redistributed.",
+  "note": "Region rows are Rockstar-confirmed. Sub-location rows are community-sourced and their coordinates are deliberately empty until verified in-game at launch.",
   "rows": [
-    {"id":"vice-city","kind":"place","region":"Vice City","game_name":"Vice City","real_place":"","confidence_pre":"official","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"},
-    {"id":"leonida-keys","kind":"place","region":"Leonida Keys","game_name":"Leonida Keys","real_place":"","confidence_pre":"official","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"},
-    {"id":"grassrivers","kind":"place","region":"Grassrivers","game_name":"Grassrivers","real_place":"","confidence_pre":"official","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"},
-    {"id":"port-gellhorn","kind":"place","region":"Port Gellhorn","game_name":"Port Gellhorn","real_place":"","confidence_pre":"official","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"},
-    {"id":"ambrosia","kind":"place","region":"Ambrosia","game_name":"Ambrosia","real_place":"","confidence_pre":"official","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"},
-    {"id":"mount-kalaga","kind":"place","region":"Mount Kalaga National Park","game_name":"Mount Kalaga National Park","real_place":"","confidence_pre":"official","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"}
+    {"id":"vice-city","kind":"region","region":"Vice City","game_name":"Vice City","real_place":"","confidence_pre":"official","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"},
+    {"id":"vice-city--vice-beach","kind":"place","region":"Vice City","game_name":"Vice Beach","real_place":"","confidence_pre":"community","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"gtadb.org","source_licence":"CC BY 4.0"},
+    {"id":"vice-city--ocean-beach","kind":"place","region":"Vice City","game_name":"Ocean Beach","real_place":"","confidence_pre":"community","leonida_x":"","leonida_y":"","checked":"","verdict":"","pos_error_m":"","evidence":"","correct_value":"","source_dataset":"前不久","source_licence":"CC BY 4.0"}
   ]
 }
