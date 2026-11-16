@@ -136,7 +136,7 @@
   .note{border-left:2px solid var(--warn);background:rgba(255,176,58,.045);border-radius:0 10px 10px 0;
     padding:18px 20px;color:#c6baa2;font-size:14.5px;margin-top:28px}
   .note b{color:var(--warn)}
-  .sponsor{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  .sponsor{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:stretch}
   @media(max-width:860px){.sponsor{grid-template-columns:1fr;gap:30px}}
   .list{list-style:none;margin-top:22px}
   .list li{position:relative;padding-left:26px;margin-bottom:13px;font-size:14.5px;color:var(--body)}
@@ -149,6 +149,28 @@
   footer p{max-width:80ch;margin-bottom:11px}
   .footline{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;
     color:var(--faint);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+  /* ---- mobile table handling ---- */
+  @media(max-width:680px){
+    .scroll{max-height:60vh}
+    thead th:nth-child(3),thead th:nth-child(4),thead th:nth-child(5){display:none}
+    tbody td:nth-child(3),tbody td:nth-child(4),tbody td:nth-child(5){display:none}
+    tbody td{padding:12px 14px}
+    thead th{padding:11px 14px}
+    thead th:nth-child(1){width:44px}
+    .mobilemeta{display:block;margin-top:5px;font-size:11.5px;color:var(--dim)}
+    .mobilemeta .tagcell{font-size:9.5px;padding:2px 8px;margin-left:6px}
+  }
+  @media(min-width:681px){.mobilemeta{display:none}}
+  @media(max-width:680px){
+    table.stackable thead{display:none}
+    table.stackable tbody tr{display:block;padding:14px 16px;border-bottom:1px solid var(--line)}
+    table.stackable tbody td{display:block;border:none;padding:2px 0;text-align:left !important}
+    table.stackable tbody td.lbl{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--dim);margin-top:8px}
+    table.stackable tbody td.nm{font-size:15px;color:var(--text);font-weight:600}
+  }
+  @media(min-width:681px){table.stackable tbody td.lbl{display:none}}
 </style>
 </head>
 <body>
@@ -358,14 +380,23 @@
     <h2>Built on other people's cartography</h2>
     <p class="sub">Credit is not optional. These are the sources, used under the terms they set.</p>
     <div class="tblwrap" style="margin-top:26px">
-      <table>
+      <table class="stackable">
         <thead>
           <tr><th>Dataset</th><th>Publisher</th><th>Licence</th><th class="num">Records</th></tr>
         </thead>
         <tbody>
-          <tr><td class="nm">GTA VI Landmarks Data &amp; map tiles</td><td class="rg">gtadb.org</td><td><code>CC BY 4.0</code></td><td class="num">2,198</td></tr>
-          <tr><td class="nm">GTA 6 map points</td><td class="rg">mapheist.com</td><td><code>CC BY 4.0</code></td><td class="num">94</td></tr>
-          <tr><td class="nm">Weekly GTA data feed</td><td class="rg">grindmap.com</td><td><code>CC BY 4.0</code></td><td class="num">—</td></tr>
+          <tr><td class="nm">GTA VI Landmarks Data &amp; map tiles</td>
+            <td class="lbl">Publisher</td><td class="rg">gtadb.org</td>
+            <td class="lbl">Licence</td><td><code>CC BY 4.0</code></td>
+            <td class="lbl">Records</td><td class="num">2,198</td></tr>
+          <tr><td class="nm">GTA 6 map points</td>
+            <td class="lbl">Publisher</td><td class="rg">mapheist.com</td>
+            <td class="lbl">Licence</td><td><code>CC BY 4.0</code></td>
+            <td class="lbl">Records</td><td class="num">94</td></tr>
+          <tr><td class="nm">Weekly GTA data feed</td>
+            <td class="lbl">Publisher</td><td class="rg">grindmap.com</td>
+            <td class="lbl">Licence</td><td><code>CC BY 4.0</code></td>
+            <td class="lbl">Records</td><td class="num">—</td></tr>
         </tbody>
       </table>
     </div>
@@ -407,7 +438,7 @@ function rowHTML(r) {
     ? '<span class="tagcell off">Official</span>'
     : '<span class="tagcell">Community</span>';
   return '<tr><td><input type="checkbox" data-id="' + esc(r.id) + '"' + (FOUND[r.id] ? " checked" : "") + '></td>'
-    + '<td class="nm">' + esc(r.game_name) + '</td>'
+    + '<td class="nm">' + esc(r.game_name) + '<span class="mobilemeta">' + esc(r.region) + ' ' + conf + '</span></td>'
     + '<td class="rg">' + esc(r.region) + '</td>'
     + '<td>' + conf + '</td>'
     + '<td class="num rg">' + (r.verdict ? esc(r.verdict) : "—") + '</td></tr>';
