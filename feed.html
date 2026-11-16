@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verified Feed — Leonida Verification Desk</title>
+<meta name="description" content="GTA 6 discoveries, checked in-game before they are posted. Every claim labelled Verified, Unverified or False, and every discoverer credited.">
+<style>
+:root{--ink:#0b0b0f;--ink2:#15151c;--line:#26262f;--muted:#8b8b99;--text:#e9e8e4;--hot:#ff5c8a;--ok:#4ec98a;--warn:#ffb03a;--bad:#ff6b6b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--ink);color:var(--text);font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Inter,Roboto,Arial,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+header{border-bottom:1px solid var(--line);padding:18px 0}
+header a{color:var(--muted);text-decoration:none;font-size:14px}
+h1{font-size:clamp(30px,5vw,48px);letter-spacing:-.03em;margin:46px 0 10px;font-weight:800}
+.sub{color:var(--muted);max-width:60ch;margin-bottom:26px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:28px}
+.st{background:var(--ink2);border:1px solid var(--line);border-radius:12px;padding:16px}
+.st b{display:block;font-size:26px;font-variant-numeric:tabular-nums}.st span{font-size:12px;color:var(--muted)}
+.filters{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.filters button{background:var(--ink2);border:1px solid var(--line);color:var(--text);padding:7px 14px;border-radius:999px;cursor:pointer;font-size:13px}
+.filters button.on{border-color:var(--hot);color:var(--hot)}
+.item{border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:12px;background:var(--ink2)}
+.tag{font-size:11px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:999px}
+.Verified{background:rgba(78,201,138,.14);color:var(--ok)}.Unverified{background:rgba(255,176,58,.14);color:var(--warn)}.False{background:rgba(255,107,107,.14);color:var(--bad)}
+.claim{font-weight:650;margin:10px 0 6px}.meta{font-size:13px;color:var(--muted)}
+.empty{color:var(--muted);border:1px dashed var(--line);border-radius:14px;padding:30px;text-align:center}
+footer{color:var(--muted);font-size:12px;padding:40px 0}
+</style></head><body>
+<header><div class="wrap"><a href="/">&larr; Leonida Verification Desk</a></div></header>
+<main class="wrap">
+<h1>Verified Feed</h1>
+<p class="sub">Discoveries checked in the game before they are posted. Every claim is labelled, every discoverer is credited, and every false viral claim is called out. No leaks, no datamines.</p>
+<div class="stats">
+ <div class="st"><b id="s1">—</b><span>Claims checked</span></div>
+ <div class="st"><b id="s2">—</b><span>Verified</span></div>
+ <div class="st"><b id="s3">—</b><span>Debunked</span></div>
+ <div class="st"><b id="s4">—</b><span>Median minutes to post</span></div>
+</div>
+<div class="filters" id="f"></div>
+<div id="list"></div>
+</main>
+<footer><div class="wrap">Independent fan project. Not affiliated with or endorsed by Rockstar Games or Take-Two Interactive. Discoveries are credited to the players who found them.</div></footer>
+<script>
+let all=[],cur="All";
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function render(){
+ const L=document.getElementById("list"),rows=cur==="All"?all:all.filter(x=>x.status===cur);
+ L.innerHTML=rows.length?rows.map(x=>`<div class="item"><span class="tag ${esc(x.status)}">${esc(x.status).toUpperCase()}</span>
+ <div class="claim">${esc(x.claim)}</div><div class="meta">${x.region?esc(x.region)+" · ":""}First found by ${esc(x.discoverer||"unknown")}${x.lag_min!=null?" · posted "+x.lag_min+" min after discovery":""}</div></div>`).join("")
+ :`<div class="empty">No checked claims yet. The feed goes live when the game unlocks on 19 November.</div>`;
+ document.getElementById("f").innerHTML=["All","Verified","Unverified","False"].map(k=>`<button class="${k===cur?"on":""}" onclick="cur='${k}';render()">${k}</button>`).join("");
+}
+fetch("data/discoveries.json").then(r=>r.json()).then(d=>{
+ all=d.items||[];const s=d.stats||{};
+ const set=(id,v)=>document.getElementById(id).textContent=(v==null?"—":v);
+ set("s1",s.claims);set("s2",s.verified);set("s3",s.debunked);set("s4",s.median_lag_min);render();
+}).catch(render);
+</script></body></html>
