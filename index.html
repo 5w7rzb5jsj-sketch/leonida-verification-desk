@@ -3,12 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Leonida Verification Desk — marker accuracy for the GTA 6 community maps</title>
-<meta name="description" content="Community map markers for GTA 6 were traced from trailers. Launch day makes them checkable. We record what each one turned out to be: confirmed, corrected, or debunked.">
+<title>Leonida Verification Desk — GTA 6 map marker accuracy, verified in-game</title>
+<meta name="description" content="Community map markers for GTA 6 were traced from trailers. Launch day makes them checkable. We record what each one turned out to be: confirmed, corrected, or debunked. Open data, published daily.">
 <meta property="og:title" content="Leonida Verification Desk">
-<meta property="og:description" content="Which community map markers survived contact with the real game.">
+<meta property="og:description" content="Which community map markers survived contact with the real game. Verified in-game, published as open data.">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://leonida-verification-desk.vercel.app/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230b0b0f'/%3E%3Cpath d='M22 68V32h10l9 22 9-22h10v36h-8V46l-7 18h-8l-7-18v22z' fill='%23ff5c8a'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Dataset","name":"Leonida Verification Desk register","description":"Community GTA 6 map markers, checked in-game at launch and published with a verdict per marker: confirmed, corrected or debunked.","license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Organization","name":"Leonida Verification Desk","sameAs":["https://x.com/LeonidaVerdict"]},"datePublished":"2026-11-16","isAccessibleForFree":true,"keywords":["GTA 6","Leonida map","marker accuracy","open data","community cartography"],"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://leonida-verification-desk.vercel.app/data/register.json"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://leonida-verification-desk.vercel.app/data/corrections.json"}]}
+</script>
 <style>
   :root{
     --ink:#0b0b0f; --ink2:#15151c; --line:#26262f;
@@ -28,7 +33,7 @@
   .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
   .dot{width:9px;height:9px;border-radius:50%;background:var(--hot);
     box-shadow:0 0 0 4px rgba(255,92,138,.16)}
-  .nav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+  .nav{display:flex;gap:20px;font-size:14px;color:var(--muted)}
   .nav a:hover{color:var(--text)}
   .hero{padding:84px 0 56px;border-bottom:1px solid var(--line);
     background:radial-gradient(120% 90% at 15% -10%,rgba(255,92,138,.16),transparent 60%),
@@ -87,7 +92,10 @@
   .follow .btn{padding:9px 16px;font-size:13px}
   .rule{border-left:2px solid var(--warn);padding-left:16px;color:#cbbfa4;
     background:rgba(255,176,58,.05);border-radius:0 8px 8px 0;padding:14px 16px}
-  .empty{color:var(--muted);font-style:italic;padding:20px 0}
+  .ask{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
+  .ask input{flex:1 1 260px;background:#0e0e14;border:1px solid var(--line);color:var(--text);
+    padding:13px 16px;border-radius:11px;font-size:15px;font-family:inherit}
+  .ask input:focus{outline:none;border-color:var(--hot)}
 </style>
 </head>
 <body>
@@ -98,8 +106,9 @@
     <nav class="nav">
       <a href="#method">Method</a>
       <a href="#tally">Tally</a>
-      <a href="#data">Data</a>
+      <a href="#tracker">Tracker</a>
       <a href="feed.html">Verified feed</a>
+      <a href="#sponsor">Sponsor</a>
       <a href="#licence">Licence</a>
     </nav>
   </div>
@@ -114,8 +123,8 @@
       checkable against the real thing. <strong>This desk records which ones survived.</strong>
       Confirmed, corrected, or debunked — with the evidence, per marker.</p>
     <div class="cta">
-      <a class="btn p" href="#data">Read the dataset</a>
-      <a class="btn s" href="#method">How verification works</a>
+      <a class="btn p" href="#tracker">Open the tracker</a>
+      <a class="btn s" href="#data">Read the dataset</a>
     </div>
   </div>
 </div>
@@ -173,6 +182,22 @@
   </div>
 </section>
 
+<section id="tracker">
+  <div class="wrap">
+    <h2>Marker tracker</h2>
+    <p class="sub">The register itself, filterable. Search a name, filter by region or by
+      how confident the community was, then track your own progress. Your ticks stay in
+      this browser — no account, nothing sent anywhere.</p>
+    <div class="ask">
+      <input id="q" type="search" placeholder="Search markers — try Port Gellhorn">
+      <select id="freg" style="background:#0e0e14;border:1px solid var(--line);color:var(--text);padding:13px 16px;border-radius:11px;font-size:15px;font-family:inherit"></select>
+      <button class="btn s" id="resetBtn" type="button">Reset ticks</button>
+    </div>
+    <div style="margin-top:14px"><span class="pill" id="tcount">loading</span> <span class="pill" id="tfound">0 found by you</span></div>
+    <div id="trackerList" style="margin-top:18px"></div>
+  </div>
+</section>
+
 <section id="data">
   <div class="wrap">
     <h2>The dataset</h2>
@@ -201,13 +226,27 @@
         no datamines.</p>
       <p><a class="btn s" href="feed.html">Open the feed</a></p>
     </div>
-    <div class="card" style="margin-top:18px">
-      <h3>Rebuild it from source</h3>
-      <p style="margin-bottom:14px">The register is generated, not hand-written. Pull the
-        licensed community datasets and regenerate both payloads:</p>
-      <pre>python3 ingest.py --register
-python3 ingest.py --corrections</pre>
+  </div>
+</section>
+
+<section id="sponsor">
+  <div class="wrap">
+    <h2>Work with the desk</h2>
+    <p class="sub">This is a measurement, not an opinion. If your product reaches GTA players,
+      that is the audience this desk serves — and the numbers are ones we can prove.</p>
+    <div class="grid2">
+      <div class="card">
+        <h3>What we can show you</h3>
+        <p>Median minutes from discovery to a verified post. Debunk share, which proves we
+          filter rather than repeat. Number of discoverers credited. Corrections issued, publicly.</p>
+      </div>
+      <div class="card">
+        <h3>What we do not do</h3>
+        <p>No leaks or datamined material. No audience data sold. No uncredited sourcing.
+          Sponsor slots are labelled as such, always.</p>
+      </div>
     </div>
+    <p style="margin-top:20px"><a class="btn s" href="data/sponsor.json">data/sponsor.json</a></p>
   </div>
 </section>
 
@@ -249,54 +288,82 @@ python3 ingest.py --corrections</pre>
 <script>
 const fmt = n => (n === null || n === undefined) ? "—" : n.toLocaleString("en-US");
 const pct = n => (n === null || n === undefined) ? "—" : (n * 100).toFixed(1) + "%";
+const esc = s => String(s ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY = "lvd.found.v1";
+let REG = null, COR = null, FOUND = {};
+try { FOUND = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ FOUND = {}; }
+
+function saveFound(){ try { localStorage.setItem(KEY, JSON.stringify(FOUND)); } catch(e){} }
+
+function renderTracker(){
+  if (!REG) return;
+  const q = (document.getElementById("q").value || "").toLowerCase().trim();
+  const reg = document.getElementById("freg").value;
+  let rows = REG.rows.filter(r => {
+    if (reg && r.region !== reg) return false;
+    if (!q) return true;
+    return (r.game_name + " " + r.region + " " + r.id).toLowerCase().includes(q);
+  });
+  const foundN = REG.rows.filter(r => FOUND[r.id]).length;
+  document.getElementById("tcount").textContent = rows.length + " of " + REG.rows.length + " shown";
+  document.getElementById("tfound").textContent = foundN + " found by you";
+  const list = document.getElementById("trackerList");
+  if (!rows.length){
+    list.innerHTML = '<p class="empty">No markers match that search.</p>';
+    return;
+  }
+  list.innerHTML = '<table><thead><tr><th style="width:44px"></th><th>Marker</th><th>Region</th>'
+    + '<th>Confidence</th><th class="num">Verified</th></tr></thead><tbody>'
+    + rows.map(r => {
+        const on = FOUND[r.id] ? "checked" : "";
+        return '<tr><td><input type="checkbox" data-id="' + esc(r.id) + '" ' + on + '></td>'
+          + '<td>' + esc(r.game_name) + '</td>'
+          + '<td>' + esc(r.region) + '</td>'
+          + '<td><code>' + esc(r.confidence_pre) + '</code></td>'
+          + '<td class="num">' + (r.verdict ? esc(r.verdict) : "—") + '</td></tr>';
+      }).join("") + '</tbody></table>';
+}
 
 async function load(){
-  let reg = null, cor = null;
-  try { reg = await (await fetch("data/register.json")).json(); } catch(e){}
-  try { cor = await (await fetch("data/corrections.json")).json(); } catch(e){}
+  try { REG = await (await fetch("data/register.json")).json(); } catch(e){}
+  try { COR = await (await fetch("data/corrections.json")).json(); } catch(e){}
 
-  const marks = cor ? cor.markers_registered : (reg ? reg.count : null);
+  const marks = COR ? COR.markers_registered : (REG ? REG.count : null);
   document.getElementById("t_reg").textContent = fmt(marks);
-  document.getElementById("t_chk").textContent = cor ? fmt(cor.markers_checked) : "—";
-  document.getElementById("t_acc").textContent = cor ? pct(cor.prelaunch_accuracy) : "—";
+  document.getElementById("t_chk").textContent = COR ? fmt(COR.markers_checked) : "—";
+  document.getElementById("t_acc").textContent = COR ? pct(COR.prelaunch_accuracy) : "—";
   document.getElementById("t_err").textContent =
-    (cor && cor.mean_position_error_m !== null) ? fmt(cor.mean_position_error_m) : "—";
+    (COR && COR.mean_position_error_m !== null) ? fmt(COR.mean_position_error_m) : "—";
 
   const state = document.getElementById("t_state");
-  if (cor && cor.markers_checked > 0){
-    state.textContent = "verified · " + cor.markers_checked + " of " + cor.markers_registered + " markers checked";
-  } else {
-    state.textContent = "register seeded · verification begins at launch";
-  }
+  state.textContent = (COR && COR.markers_checked > 0)
+    ? "verified · " + COR.markers_checked + " of " + COR.markers_registered + " markers checked"
+    : "register seeded · verification begins at launch";
 
-  const t = document.getElementById("tallyTable");
-  if (cor){
-    const v = cor.verdicts;
-    t.innerHTML = `<table><thead><tr><th>Verdict</th><th class="num">Markers</th>
-      <th class="num">Share of checked</th></tr></thead><tbody>
-      ${
-        ["Confirmed","Corrected","Debunked","Inconclusive"].map(k => {
-          const share = cor.markers_checked ? (v[k]/cor.markers_checked) : null;
-          return `<tr><td>${k}</td><td class="num">${fmt(v[k])}</td><td class="num">${pct(share)}</td></tr>`;
-        }).join("")
-      }
-      </tbody></table>`;
+  if (COR){
+    const v = COR.verdicts;
+    document.getElementById("tallyTable").innerHTML =
+      '<table><thead><tr><th>Verdict</th><th class="num">Markers</th><th class="num">Share of checked</th></tr></thead><tbody>'
+      + ["Confirmed","Corrected","Debunked","Inconclusive"].map(k => {
+          const share = COR.markers_checked ? (v[k]/COR.markers_checked) : null;
+          return '<tr><td>' + k + '</td><td class="num">' + fmt(v[k]) + '</td><td class="num">' + pct(share) + '</td></tr>';
+        }).join("") + '</tbody></table>';
   }
 
   const c = document.getElementById("corPreview");
-  if (c) c.textContent = cor ? JSON.stringify({
-    markers_registered: cor.markers_registered,
-    markers_checked: cor.markers_checked,
-    verdicts: cor.verdicts,
-    prelaunch_accuracy: cor.prelaunch_accuracy,
-    correction_rate: cor.correction_rate,
-    mean_position_error_m: cor.mean_position_error_m
+  if (c) c.textContent = COR ? JSON.stringify({
+    markers_registered: COR.markers_registered,
+    markers_checked: COR.markers_checked,
+    verdicts: COR.verdicts,
+    prelaunch_accuracy: COR.prelaunch_accuracy,
+    correction_rate: COR.correction_rate,
+    mean_position_error_m: COR.mean_position_error_m
   }, null, 2) : "unavailable";
 
   const r = document.getElementById("regPreview");
-  if (r) r.textContent = reg ? JSON.stringify({
-    generated: reg.generated, count: reg.count,
-    schema: reg.schema, attribution: reg.attribution
+  if (r) r.textContent = REG ? JSON.stringify({
+    generated: REG.generated, count: REG.count,
+    schema: REG.schema, attribution: REG.attribution
   }, null, 2) : "unavailable";
 
   const sources = [
@@ -305,11 +372,29 @@ async function load(){
     {d:"Weekly GTA data feed", p:"grindmap.com", l:"CC BY 4.0", n:"—"}
   ];
   document.getElementById("srcRows").innerHTML = sources.map(s =>
-    `<tr><td>${s.d}</td><td>${s.p}</td><td><code>${s.l}</code></td><td class="num">${s.n}</td></tr>`
+    '<tr><td>' + s.d + '</td><td>' + s.p + '</td><td><code>' + s.l + '</code></td><td class="num">' + s.n + '</td></tr>'
   ).join("");
 
-  const g = (cor && cor.generated) || (reg && reg.generated);
+  const g = (COR && COR.generated) || (REG && REG.generated);
   if (g) document.getElementById("genline").textContent = "Register generated " + g + " UTC.";
+
+  if (REG){
+    const sel = document.getElementById("freg");
+    const regions = [...new Set(REG.rows.map(r => r.region))].sort();
+    sel.innerHTML = '<option value="">All regions</option>'
+      + regions.map(x => '<option value="' + esc(x) + '">' + esc(x) + '</option>').join("");
+    sel.addEventListener("change", renderTracker);
+    document.getElementById("q").addEventListener("input", renderTracker);
+    document.getElementById("resetBtn").addEventListener("click", () => { FOUND = {}; saveFound(); renderTracker(); });
+    document.getElementById("trackerList").addEventListener("change", e => {
+      const id = e.target && e.target.getAttribute && e.target.getAttribute("data-id");
+      if (!id) return;
+      if (e.target.checked) FOUND[id] = 1; else delete FOUND[id];
+      saveFound();
+      document.getElementById("tfound").textContent = REG.rows.filter(rr => FOUND[rr.id]).length + " found by you";
+    });
+    renderTracker();
+  }
 }
 load();
 </script>
