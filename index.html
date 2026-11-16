@@ -4,110 +4,169 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Leonida Verification Desk — GTA 6 map marker accuracy, verified in-game</title>
-<meta name="description" content="Community map markers for GTA 6 were traced from trailers. Launch day makes them checkable. We record what each one turned out to be: confirmed, corrected, or debunked. Open data, published daily.">
+<meta name="description" content="49 community map markers for GTA 6, checked in the game at launch and published with a verdict per marker: confirmed, corrected, debunked. Open data, CC BY 4.0.">
 <meta property="og:title" content="Leonida Verification Desk">
-<meta property="og:description" content="Which community map markers survived contact with the real game. Verified in-game, published as open data.">
+<meta property="og:description" content="49 community map markers. On 19 November we find out which were right.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://leonida-verification-desk.vercel.app/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230b0b0f'/%3E%3Cpath d='M22 68V32h10l9 22 9-22h10v36h-8V46l-7 18h-8l-7-18v22z' fill='%23ff5c8a'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%230a0a0c'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23ff4d85' stroke-width='10'/%3E%3Cpath d='M36 50l10 10 18-21' fill='none' stroke='%233ddc97' stroke-width='9' stroke-linecap='round'/%3E%3C/svg%3E">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Dataset","name":"Leonida Verification Desk register","description":"Community GTA 6 map markers, checked in-game at launch and published with a verdict per marker: confirmed, corrected or debunked.","license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Organization","name":"Leonida Verification Desk","sameAs":["https://x.com/LeonidaVerdict"]},"datePublished":"2026-11-16","isAccessibleForFree":true,"keywords":["GTA 6","Leonida map","marker accuracy","open data","community cartography"],"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://leonida-verification-desk.vercel.app/data/register.json"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://leonida-verification-desk.vercel.app/data/corrections.json"}]}
+{"@context":"https://schema.org","@type":"Dataset","name":"Leonida Verification Desk register","description":"49 community GTA 6 map markers, checked in-game at launch and published with a verdict per marker: confirmed, corrected or debunked.","license":"https://creativecommons.org/licenses/by/4.0/","creator":{"@type":"Organization","name":"Leonida Verification Desk","sameAs":["https://x.com/LeonidaVerdict"]},"datePublished":"2026-11-16","isAccessibleForFree":true,"keywords":["GTA 6","Leonida map","marker accuracy","open data","community cartography"],"distribution":[{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://leonida-verification-desk.vercel.app/data/register.json"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://leonida-verification-desk.vercel.app/data/corrections.json"}]}
 </script>
 <style>
   :root{
-    --ink:#0b0b0f; --ink2:#15151c; --line:#26262f;
-    --paper:#f6f5f2; --muted:#8b8b99; --text:#e9e8e4;
-    --hot:#ff5c8a; --sun:#ffc247; --ok:#4ec98a; --warn:#ffb03a; --bad:#ff6b6b; --grey:#7d7d8c;
+    --bg:#08080a; --panel:#101014; --panel2:#15151a; --line:#232329; --line2:#2e2e37;
+    --text:#f2f1ee; --body:#b9b8c0; --dim:#77767f; --faint:#4c4b54;
+    --hot:#ff4d85; --sun:#ffc247; --ok:#3ddc97; --warn:#ffb03a; --bad:#ff5f5f; --grey:#6e6d78;
+    --r:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{background:var(--ink);color:var(--text);
-    font:16px/1.6 ui-sans-serif,-apple-system,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--body);
+    font:16px/1.62 ui-sans-serif,-apple-system,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-feature-settings:"ss01","cv01"}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+  .narrow{max-width:760px}
   a{color:inherit}
-  header{border-bottom:1px solid var(--line);position:sticky;top:0;
-    background:rgba(11,11,15,.86);backdrop-filter:blur(12px);z-index:20}
-  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em}
-  .dot{width:9px;height:9px;border-radius:50%;background:var(--hot);
-    box-shadow:0 0 0 4px rgba(255,92,138,.16)}
-  .nav{display:flex;gap:20px;font-size:14px;color:var(--muted)}
+  ::selection{background:var(--hot);color:#12060b}
+  header{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);
+    background:rgba(8,8,10,.72);backdrop-filter:blur(14px) saturate(180%)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:680;color:var(--text);font-size:15px;letter-spacing:-.015em}
+  .mark{width:26px;height:26px;flex:none}
+  .nav{display:flex;gap:26px;font-size:13.5px;color:var(--dim)}
+  .nav a{text-decoration:none;transition:color .15s}
   .nav a:hover{color:var(--text)}
-  .hero{padding:84px 0 56px;border-bottom:1px solid var(--line);
-    background:radial-gradient(120% 90% at 15% -10%,rgba(255,92,138,.16),transparent 60%),
-               radial-gradient(90% 80% at 95% 0%,rgba(255,194,71,.10),transparent 55%)}
-  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--sun);border:1px solid var(--line);
-    border-radius:999px;padding:6px 14px;background:rgba(255,194,71,.06)}
-  h1{font-size:clamp(38px,6.2vw,68px);line-height:1.02;letter-spacing:-.035em;
-    margin:22px 0 20px;font-weight:800}
-  h1 em{font-style:normal;color:var(--hot)}
-  .lede{font-size:clamp(17px,2.1vw,21px);color:#c9c8c2;max-width:60ch}
-  .lede strong{color:var(--text)}
-  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
-  .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;
-    font-weight:650;font-size:15px;text-decoration:none;border:1px solid var(--line);transition:.16s}
-  .btn.p{background:var(--hot);color:#12060b;border-color:transparent}
-  .btn.p:hover{filter:brightness(1.08);transform:translateY(-1px)}
-  .btn.s{background:transparent;color:var(--text)}
-  .btn.s:hover{border-color:var(--muted);background:var(--ink2)}
-  section{padding:72px 0;border-bottom:1px solid var(--line)}
-  h2{font-size:clamp(25px,3.4vw,36px);letter-spacing:-.03em;margin-bottom:14px;font-weight:750}
-  .sub{color:var(--muted);max-width:62ch;margin-bottom:36px}
-  .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
-  .tile{background:var(--ink2);border:1px solid var(--line);border-radius:14px;padding:22px}
-  .tile .n{font-size:34px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-  .tile .l{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
-  .tile.hot .n{color:var(--hot)}
-  .tile.sun .n{color:var(--sun)}
-  .tile.ok .n{color:var(--ok)}
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-  @media(max-width:760px){.grid2{grid-template-columns:1fr}.nav{display:none}}
-  .card{background:var(--ink2);border:1px solid var(--line);border-radius:16px;padding:26px}
-  .card h3{font-size:17px;margin-bottom:10px;font-weight:700}
-  .card p{color:var(--muted);font-size:15px}
-  .vt{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:26px}
-  @media(max-width:860px){.vt{grid-template-columns:1fr 1fr}}
-  .v{border-radius:12px;padding:16px;border:1px solid var(--line);background:var(--ink2)}
-  .v .vn{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14px;margin-bottom:7px}
-  .sw{width:10px;height:10px;border-radius:3px}
-  .v p{font-size:13px;color:var(--muted);line-height:1.5}
-  table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
-  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-  th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-  td.num{text-align:right;font-variant-numeric:tabular-nums}
-  code{background:#1d1d26;border:1px solid var(--line);border-radius:6px;
-    padding:2px 7px;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  pre{background:#0e0e14;border:1px solid var(--line);border-radius:12px;padding:16px;
-    overflow:auto;font-size:13px;line-height:1.55;
-    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfcfd8}
-  .pill{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-    padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
-  footer{padding:44px 0 64px;color:var(--muted);font-size:13px}
-  footer p{max-width:76ch;margin-bottom:10px}
-  .follow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
-  .follow .fl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-right:4px}
-  .follow .btn{padding:9px 16px;font-size:13px}
-  .rule{border-left:2px solid var(--warn);padding-left:16px;color:#cbbfa4;
-    background:rgba(255,176,58,.05);border-radius:0 8px 8px 0;padding:14px 16px}
-  .ask{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:22px}
-  .ask input{flex:1 1 260px;background:#0e0e14;border:1px solid var(--line);color:var(--text);
-    padding:13px 16px;border-radius:11px;font-size:15px;font-family:inherit}
-  .ask input:focus{outline:none;border-color:var(--hot)}
+  @media(max-width:880px){.nav{display:none}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);padding:96px 0 0}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(58% 62% at 82% -12%,rgba(255,77,133,.20),transparent 68%),
+      radial-gradient(46% 54% at 6% 4%,rgba(255,194,71,.10),transparent 64%);pointer-events:none}
+  .hero::after{content:"";position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
+    background-size:72px 72px;mask-image:radial-gradient(78% 62% at 50% 8%,#000,transparent 76%);pointer-events:none}
+  .hero .wrap{position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:11.5px;font-weight:640;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--sun);
+    border:1px solid rgba(255,194,71,.26);background:rgba(255,194,71,.07);border-radius:999px;padding:7px 15px}
+  .pulse{width:6px;height:6px;border-radius:50%;background:var(--sun);animation:p 2.4s infinite}
+  @keyframes p{0%{box-shadow:0 0 0 0 rgba(255,194,71,.5)}70%{box-shadow:0 0 0 9px rgba(255,194,71,0)}100%{box-shadow:0 0 0 0 rgba(255,194,71,0)}}
+  h1{font-size:clamp(40px,6.4vw,74px);line-height:.99;letter-spacing:-.042em;font-weight:800;color:var(--text);margin:26px 0 0;max-width:16ch}
+  h1 em{font-style:normal;background:linear-gradient(100deg,var(--hot),#ff8ab0 62%,var(--sun));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{font-size:clamp(17px,1.9vw,20px);color:var(--body);max-width:56ch;margin-top:22px}
+  .lede b{color:var(--text);font-weight:620}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:11px;
+    font-weight:640;font-size:14.5px;text-decoration:none;border:1px solid var(--line2);
+    transition:transform .16s,filter .16s,border-color .16s;white-space:nowrap}
+  .btn.p{background:linear-gradient(180deg,#ff5f92,var(--hot));color:#18060e;border-color:transparent;
+    box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 8px 26px -10px rgba(255,77,133,.6)}
+  .btn.p:hover{filter:brightness(1.07);transform:translateY(-1px)}
+  .btn.s{background:var(--panel);color:var(--text)}
+  .btn.s:hover{border-color:#3c3c46;background:var(--panel2)}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);
+    border-radius:var(--r) var(--r) 0 0;border-bottom:none;
+    background:linear-gradient(180deg,rgba(21,21,26,.9),rgba(16,16,20,.9));margin-top:66px;overflow:hidden}
+  @media(max-width:820px){.strip{grid-template-columns:1fr 1fr}}
+  .cell{padding:24px 26px;border-right:1px solid var(--line)}
+  .cell:last-child{border-right:none}
+  @media(max-width:820px){.cell:nth-child(2n){border-right:none}.cell:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+  .cell .k{font-size:10.5px;font-weight:660;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+  .cell .v{font-size:clamp(30px,4.2vw,44px);font-weight:800;letter-spacing:-.04em;color:var(--text);line-height:1.05;margin-top:10px;font-variant-numeric:tabular-nums}
+  .cell .v.hot{color:var(--hot)}
+  .cell .v.ok{color:var(--ok)}
+  .cell .f{font-size:12.5px;color:var(--faint);margin-top:5px}
+  section{padding:88px 0;border-bottom:1px solid var(--line)}
+  .tag{font-size:11px;font-weight:660;letter-spacing:.15em;text-transform:uppercase;color:var(--hot);margin-bottom:14px}
+  h2{font-size:clamp(26px,3.5vw,40px);letter-spacing:-.032em;font-weight:760;color:var(--text);line-height:1.1;max-width:20ch}
+  h2.wide{max-width:30ch}
+  .sub{color:var(--body);max-width:60ch;margin-top:16px;font-size:16.5px}
+  .sub b{color:var(--text);font-weight:620}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:38px}
+  @media(max-width:760px){.cards{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px}
+  .card h3{font-size:15.5px;font-weight:680;color:var(--text);margin-bottom:9px;letter-spacing:-.01em}
+  .card p{font-size:14.5px;color:var(--dim);line-height:1.6}
+  .verdicts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px}
+  @media(max-width:900px){.verdicts{grid-template-columns:1fr 1fr}}
+  .vd{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;position:relative;overflow:hidden}
+  .vd::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
+  .vd .vn{display:flex;align-items:center;gap:9px;font-weight:700;font-size:13.5px;color:var(--text)}
+  .vd .dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none;box-shadow:0 0 12px -1px var(--c)}
+  .vd p{font-size:13px;color:var(--dim);line-height:1.55;margin-top:9px}
+  .tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+  .tools input,.tools select{background:var(--panel);border:1px solid var(--line2);color:var(--text);
+    padding:12px 15px;border-radius:10px;font-size:14.5px;font-family:inherit;transition:border-color .15s}
+  .tools input{flex:1 1 300px}
+  .tools input::placeholder{color:var(--faint)}
+  .tools input:focus,.tools select:focus{outline:none;border-color:var(--hot)}
+  .meta{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-top:16px;min-height:26px}
+  .chip{font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--dim);
+    border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--panel)}
+  .chip.on{color:var(--ok);border-color:rgba(61,220,151,.34);background:rgba(61,220,151,.07)}
+  .tblwrap{margin-top:20px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--panel)}
+  .scroll{max-height:520px;overflow:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  thead th{position:sticky;top:0;background:#131318;text-align:left;font-size:10.5px;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--dim);font-weight:660;
+    padding:13px 18px;border-bottom:1px solid var(--line2);z-index:2}
+  tbody td{padding:13px 18px;border-bottom:1px solid var(--line);vertical-align:middle}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr:hover{background:rgba(255,255,255,.022)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  .nm{color:var(--text);font-weight:600;letter-spacing:-.005em}
+  .rg{color:var(--dim);font-size:13px}
+  .tagcell{font-size:10.5px;font-weight:660;letter-spacing:.07em;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px;border:1px solid var(--line2);color:var(--dim)}
+  .tagcell.off{color:var(--sun);border-color:rgba(255,194,71,.3);background:rgba(255,194,71,.06)}
+  input[type=checkbox]{appearance:none;width:17px;height:17px;border-radius:5px;border:1.5px solid var(--line2);
+    background:transparent;cursor:pointer;position:relative;transition:border-color .15s,background .15s}
+  input[type=checkbox]:hover{border-color:var(--ok)}
+  input[type=checkbox]:checked{background:var(--ok);border-color:var(--ok)}
+  input[type=checkbox]:checked::after{content:"";position:absolute;left:5px;top:1.5px;width:4px;height:9px;
+    border:solid #06221a;border-width:0 2px 2px 0;transform:rotate(42deg)}
+  pre{background:#0c0c10;border:1px solid var(--line);border-radius:12px;padding:18px;overflow:auto;
+    font-size:12.5px;line-height:1.6;color:#a8a7b0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+  .files{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  code{background:#1a1a20;border:1px solid var(--line);border-radius:6px;padding:2px 7px;font-size:12.5px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--body)}
+  .note{border-left:2px solid var(--warn);background:rgba(255,176,58,.045);border-radius:0 10px 10px 0;
+    padding:18px 20px;color:#c6baa2;font-size:14.5px;margin-top:28px}
+  .note b{color:var(--warn)}
+  .sponsor{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+  @media(max-width:860px){.sponsor{grid-template-columns:1fr;gap:30px}}
+  .list{list-style:none;margin-top:22px}
+  .list li{position:relative;padding-left:26px;margin-bottom:13px;font-size:14.5px;color:var(--body)}
+  .list li::before{content:"";position:absolute;left:0;top:8px;width:13px;height:2px;border-radius:2px;background:var(--hot)}
+  .list.no li::before{background:var(--grey)}
+  footer{padding:64px 0 76px;color:var(--dim);font-size:13.5px}
+  .follow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:34px}
+  .fl{font-size:10.5px;font-weight:660;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-right:6px}
+  .follow .btn{padding:10px 17px;font-size:13px}
+  footer p{max-width:80ch;margin-bottom:11px}
+  .footline{margin-top:26px;padding-top:22px;border-top:1px solid var(--line);font-size:12.5px;
+    color:var(--faint);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap bar">
-    <div class="brand"><span class="dot"></span>Leonida Verification Desk</div>
+    <div class="brand">
+      <svg class="mark" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="30" fill="none" stroke="#ff4d85" stroke-width="10"/>
+        <path d="M36 50l10 10 18-21" fill="none" stroke="#3ddc97" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Leonida Verification Desk
+    </div>
     <nav class="nav">
       <a href="#method">Method</a>
-      <a href="#tally">Tally</a>
       <a href="#tracker">Tracker</a>
-      <a href="feed.html">Verified feed</a>
+      <a href="feed.html">Feed</a>
+      <a href="#data">Data</a>
       <a href="#sponsor">Sponsor</a>
       <a href="#licence">Licence</a>
     </nav>
@@ -116,154 +175,199 @@
 
 <div class="hero">
   <div class="wrap">
-    <span class="kicker">Launch: 19 November 2026</span>
-    <h1>Every community map marker<br>was a <em>guess</em>. Now we find out.</h1>
-    <p class="lede">Leonida's community maps were traced by hand from trailers and
-      screenshots. On launch day the game ships and every one of those markers becomes
-      checkable against the real thing. <strong>This desk records which ones survived.</strong>
-      Confirmed, corrected, or debunked — with the evidence, per marker.</p>
+    <span class="eyebrow"><span class="pulse"></span>Launches 19 November 2026</span>
+    <h1>Every marker was a <em>guess</em>.</h1>
+    <p class="lede">Leonida's community maps were traced by hand from trailers and screenshots.
+      <b>49 markers</b> are on the desk. On Thursday the game ships, and every one of them becomes
+      checkable against the real thing. We publish which ones survived — confirmed, corrected,
+      or debunked, with the evidence.</p>
     <div class="cta">
       <a class="btn p" href="#tracker">Open the tracker</a>
-      <a class="btn s" href="#data">Read the dataset</a>
+      <a class="btn s" href="#data">Get the data</a>
+    </div>
+
+    <div class="strip">
+      <div class="cell">
+        <div class="k">Markers registered</div>
+        <div class="v hot" id="s_reg">—</div>
+        <div class="f" id="s_regf">6 regions · 43 places</div>
+      </div>
+      <div class="cell">
+        <div class="k">Checked in-game</div>
+        <div class="v ok" id="s_chk">—</div>
+        <div class="f">begins at launch</div>
+      </div>
+      <div class="cell">
+        <div class="k">Pre-launch accuracy</div>
+        <div class="v" id="s_acc">—</div>
+        <div class="f">confirmed ÷ checked</div>
+      </div>
+      <div class="cell">
+        <div class="k">Mean position error</div>
+        <div class="v" id="s_err">—</div>
+        <div class="f">metres, corrected markers</div>
+      </div>
     </div>
   </div>
 </div>
 
 <section id="method">
   <div class="wrap">
-    <h2>The gap nobody is filling</h2>
-    <p class="sub">There are more than twenty GTA 6 map sites in the wild, and almost all of
-      them published their marker set before the game existed. When the game arrives,
-      those markers are either right or wrong — and no one is keeping score. Verification
-      is unglamorous work that produces the one thing the whole ecosystem lacks:
-      a record of its own accuracy.</p>
-    <div class="grid2">
-      <div class="card">
-        <h3>What we check</h3>
-        <p>Each marker in the register gets one verdict, one piece of evidence, and where
-          it was wrong, a measured position error in metres against the community's
-          own coordinate system.</p>
-      </div>
-      <div class="card">
-        <h3>What it produces</h3>
-        <p>A per-marker correction record — publishable, licensable, and useful to the map
-          sites themselves, because a corrected marker is a map that stops embarrassing
-          its readers.</p>
-      </div>
+    <div class="narrow">
+      <div class="tag">The gap</div>
+      <h2>Twenty map sites. Nobody keeping score.</h2>
+      <p class="sub">Every community map of Leonida was drawn before the game existed. When it
+        arrives those markers are either right or wrong, and <b>no one is publishing which</b>.
+        Verification is slow, unglamorous work — and it produces the one thing this ecosystem
+        has never had: a record of its own accuracy.</p>
     </div>
-    <div class="vt">
-      <div class="v"><div class="vn"><span class="sw" style="background:var(--ok)"></span>Confirmed</div>
-        <p>Marker is where and what the community said it was.</p></div>
-      <div class="v"><div class="vn"><span class="sw" style="background:var(--warn)"></span>Corrected</div>
-        <p>Real, but the position or description was wrong. Fix recorded.</p></div>
-      <div class="v"><div class="vn"><span class="sw" style="background:var(--bad)"></span>Debunked</div>
-        <p>No such place exists in the shipping game.</p></div>
-      <div class="v"><div class="vn"><span class="sw" style="background:var(--grey)"></span>Inconclusive</div>
-        <p>Could not reach or could not tell. Not scored as a failure.</p></div>
-    </div>
-  </div>
-</section>
 
-<section id="tally">
-  <div class="wrap">
-    <h2>The tally</h2>
-    <p class="sub">Live from the register. Every figure below is computed, never typed —
-      and it stays blank rather than guessing when nothing has been checked yet.</p>
-    <div id="tallyTiles" class="tiles">
-      <div class="tile hot"><div class="n" id="t_reg">—</div><div class="l">Markers registered</div></div>
-      <div class="tile sun"><div class="n" id="t_chk">—</div><div class="l">Checked against the game</div></div>
-      <div class="tile"><div class="n" id="t_acc">—</div><div class="l">Pre-launch accuracy</div></div>
-      <div class="tile"><div class="n" id="t_err">—</div><div class="l">Mean position error (m)</div></div>
+    <div class="verdicts">
+      <div class="vd" style="--c:var(--ok)">
+        <div class="vn"><span class="dot"></span>Confirmed</div>
+        <p>Real, and where the community said it was.</p>
+      </div>
+      <div class="vd" style="--c:var(--warn)">
+        <div class="vn"><span class="dot"></span>Corrected</div>
+        <p>Real, but misplaced or misdescribed. We publish the fix and the distance.</p>
+      </div>
+      <div class="vd" style="--c:var(--bad)">
+        <div class="vn"><span class="dot"></span>Debunked</div>
+        <p>No such place exists in the shipping game.</p>
+      </div>
+      <div class="vd" style="--c:var(--grey)">
+        <div class="vn"><span class="dot"></span>Inconclusive</div>
+        <p>Could not reach it, or could not tell. Not scored as a failure.</p>
+      </div>
     </div>
-    <div style="margin-top:34px">
-      <span class="pill" id="t_state">loading</span>
+
+    <div class="cards">
+      <div class="card">
+        <h3>One verdict, one piece of evidence</h3>
+        <p>Every marker in the register is checked in-game and gets a single label plus the
+          observation behind it. No hedging, no "possibly", no vibes.</p>
+      </div>
+      <div class="card">
+        <h3>A record, not an opinion</h3>
+        <p>The output is machine-readable: which markers were right, which were wrong, and by
+          how many metres. Useful to the map sites themselves — a corrected marker is a map
+          that stops misleading its readers.</p>
+      </div>
     </div>
-    <div id="tallyTable"></div>
   </div>
 </section>
 
 <section id="tracker">
   <div class="wrap">
-    <h2>Marker tracker</h2>
-    <p class="sub">The register itself, filterable. Search a name, filter by region or by
-      how confident the community was, then track your own progress. Your ticks stay in
-      this browser — no account, nothing sent anywhere.</p>
-    <div class="ask">
-      <input id="q" type="search" placeholder="Search markers — try Port Gellhorn">
-      <select id="freg" style="background:#0e0e14;border:1px solid var(--line);color:var(--text);padding:13px 16px;border-radius:11px;font-size:15px;font-family:inherit"></select>
+    <div class="tag">Tracker</div>
+    <h2>The register, live</h2>
+    <p class="sub">Search it, filter by region, and tick off what you find. Your ticks are saved
+      in this browser only — no account, nothing leaves your device.</p>
+
+    <div class="tools">
+      <input id="q" type="search" placeholder="Search 49 markers — try Port Gellhorn" aria-label="Search markers">
+      <select id="freg" aria-label="Filter by region"></select>
       <button class="btn s" id="resetBtn" type="button">Reset ticks</button>
     </div>
-    <div style="margin-top:14px"><span class="pill" id="tcount">loading</span> <span class="pill" id="tfound">0 found by you</span></div>
-    <div id="trackerList" style="margin-top:18px"></div>
+    <div class="meta">
+      <span class="chip" id="tcount">loading</span>
+      <span class="chip" id="tfound">0 found by you</span>
+    </div>
+
+    <div class="tblwrap">
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:52px"></th>
+              <th>Marker</th>
+              <th>Region</th>
+              <th>Confidence</th>
+              <th class="num">Verdict</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="data">
   <div class="wrap">
-    <h2>The dataset</h2>
-    <p class="sub">Machine-readable, no key, no sign-up. Attribution is required by the
-      licence and is embedded in the payloads themselves, so a consumer that strips the
-      page still carries the credit.</p>
-    <div class="grid2">
+    <div class="tag">Data</div>
+    <h2 class="wide">Open, machine-readable, no key</h2>
+    <p class="sub">Both payloads are served with permissive CORS and carry their attribution
+      inside the file — so a consumer that strips the page still carries the credit. Licensed
+      CC BY 4.0: reuse it commercially, credit the cartographers.</p>
+
+    <div class="cards">
       <div class="card">
-        <h3>Register</h3>
-        <p>Every marker in the verification register, in the columns the desk uses.</p>
-        <pre id="regPreview">loading…</pre>
-        <p style="margin-top:12px"><a class="btn s" href="data/register.json">data/register.json</a></p>
+        <h3>register.json</h3>
+        <p>Every marker, in the desk's column order, with confidence labels.</p>
+        <div class="files"><a class="btn s" href="data/register.json">data/register.json</a></div>
       </div>
       <div class="card">
-        <h3>Corrections</h3>
-        <p>The publishable output: verdicts, accuracy, correction rate and the per-marker
-          correction list.</p>
-        <pre id="corPreview">loading…</pre>
-        <p style="margin-top:12px"><a class="btn s" href="data/corrections.json">data/corrections.json</a></p>
+        <h3>corrections.json</h3>
+        <p>The publishable output — verdict counts, accuracy, and the per-marker fix list.</p>
+        <div class="files"><a class="btn s" href="data/corrections.json">data/corrections.json</a></div>
       </div>
     </div>
-    <div class="card" style="margin-top:18px">
-      <h3>Verified feed</h3>
-      <p style="margin-bottom:14px">Discoveries checked in the game before they are posted.
-        Every claim labelled, every discoverer credited, viral fakes called out. No leaks,
-        no datamines.</p>
-      <p><a class="btn s" href="feed.html">Open the feed</a></p>
+
+    <div class="note">
+      <b>Not covered by the CC BY 4.0 licence:</b> Rockstar Games artwork, trailers, screenshots
+      and the official printable Leonida map. None of it is redistributed here. Marker coordinates
+      are community estimates, not official data.
     </div>
   </div>
 </section>
 
 <section id="sponsor">
   <div class="wrap">
-    <h2>Work with the desk</h2>
-    <p class="sub">This is a measurement, not an opinion. If your product reaches GTA players,
-      that is the audience this desk serves — and the numbers are ones we can prove.</p>
-    <div class="grid2">
-      <div class="card">
-        <h3>What we can show you</h3>
-        <p>Median minutes from discovery to a verified post. Debunk share, which proves we
-          filter rather than repeat. Number of discoverers credited. Corrections issued, publicly.</p>
+    <div class="sponsor">
+      <div>
+        <div class="tag">Work with the desk</div>
+        <h2>Reach players who are actively looking</h2>
+        <p class="sub">This is a measurement, not a content mill. If your product reaches GTA
+          players, this is an audience mid-search — and the numbers we quote are ones we can
+          prove from the log.</p>
+        <ul class="list">
+          <li>Median minutes from a discovery to a published verdict</li>
+          <li>Debunk share — evidence we filter rather than repeat</li>
+          <li>Number of discoverers credited by name</li>
+          <li>Corrections issued publicly, including our own mistakes</li>
+        </ul>
+        <div class="files"><a class="btn s" href="data/sponsor.json">data/sponsor.json</a></div>
       </div>
       <div class="card">
-        <h3>What we do not do</h3>
-        <p>No leaks or datamined material. No audience data sold. No uncredited sourcing.
-          Sponsor slots are labelled as such, always.</p>
+        <h3>What we will not do</h3>
+        <ul class="list no" style="margin-top:14px">
+          <li>No leaked or datamined material, ever</li>
+          <li>No audience data sold or resold</li>
+          <li>No uncredited sourcing</li>
+          <li>No sponsor slot that isn't labelled as one</li>
+        </ul>
       </div>
     </div>
-    <p style="margin-top:20px"><a class="btn s" href="data/sponsor.json">data/sponsor.json</a></p>
   </div>
 </section>
 
 <section id="licence">
   <div class="wrap">
-    <h2>Licence and attribution</h2>
-    <p class="sub">This desk is built on other people's cartography, used under the terms
-      they set. Credit is not optional.</p>
-    <table>
-      <thead><tr><th>Dataset</th><th>Publisher</th><th>Licence</th><th class="num">Records</th></tr></thead>
-      <tbody id="srcRows"></tbody>
-    </table>
-    <div class="rule" style="margin-top:26px">
-      Community cartography is published under CC BY 4.0, which permits commercial reuse
-      with attribution. <strong>Rockstar Games artwork, trailers, screenshots and the
-      official Leonida map are not covered by that licence</strong> and are not
-      redistributed here. Marker coordinates are community estimates, not official data.
+    <div class="tag">Licence</div>
+    <h2>Built on other people's cartography</h2>
+    <p class="sub">Credit is not optional. These are the sources, used under the terms they set.</p>
+    <div class="tblwrap" style="margin-top:26px">
+      <table>
+        <thead>
+          <tr><th>Dataset</th><th>Publisher</th><th>Licence</th><th class="num">Records</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="nm">GTA VI Landmarks Data &amp; map tiles</td><td class="rg">gtadb.org</td><td><code>CC BY 4.0</code></td><td class="num">2,198</td></tr>
+          <tr><td class="nm">GTA 6 map points</td><td class="rg">mapheist.com</td><td><code>CC BY 4.0</code></td><td class="num">94</td></tr>
+          <tr><td class="nm">Weekly GTA data feed</td><td class="rg">grindmap.com</td><td><code>CC BY 4.0</code></td><td class="num">—</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </section>
@@ -276,125 +380,90 @@
       <a class="btn s" href="https://discord.gg/pEtktbUkYD" rel="noopener">Discord &middot; report a find</a>
       <a class="btn s" href="feed.html">Verified feed</a>
     </div>
-    <p><strong>Leonida Verification Desk</strong> is an independent project. It is not
-      affiliated with, endorsed by, sponsored by or associated with Rockstar Games,
-      Take-Two Interactive or any of their subsidiaries. "Grand Theft Auto", "GTA",
-      "Vice City" and "Rockstar" are trademarks of their respective owners, used here
-      for identification and commentary only.</p>
-    <p id="genline"></p>
+    <p><strong style="color:var(--body)">Leonida Verification Desk</strong> is an independent
+      project. It is not affiliated with, endorsed by, sponsored by or associated with Rockstar
+      Games, Take-Two Interactive or any of their subsidiaries. "Grand Theft Auto", "GTA",
+      "Vice City" and "Rockstar" are trademarks of their respective owners, used here for
+      identification and commentary only.</p>
+    <div class="footline">
+      <span>Sourced from CC BY 4.0 community cartography, credited throughout.</span>
+      <span id="genline"></span>
+    </div>
   </div>
 </footer>
 
 <script>
+const $ = id => document.getElementById(id);
 const fmt = n => (n === null || n === undefined) ? "—" : n.toLocaleString("en-US");
 const pct = n => (n === null || n === undefined) ? "—" : (n * 100).toFixed(1) + "%";
-const esc = s => String(s ?? "").replace(/[&<>\"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const KEY = "lvd.found.v1";
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const KEY = "lvd.found.v2";
 let REG = null, COR = null, FOUND = {};
-try { FOUND = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){ FOUND = {}; }
+try { FOUND = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { FOUND = {}; }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(FOUND)); } catch (e) {} };
 
-function saveFound(){ try { localStorage.setItem(KEY, JSON.stringify(FOUND)); } catch(e){} }
-
-function renderTracker(){
-  if (!REG) return;
-  const q = (document.getElementById("q").value || "").toLowerCase().trim();
-  const reg = document.getElementById("freg").value;
-  let rows = REG.rows.filter(r => {
-    if (reg && r.region !== reg) return false;
-    if (!q) return true;
-    return (r.game_name + " " + r.region + " " + r.id).toLowerCase().includes(q);
-  });
-  const foundN = REG.rows.filter(r => FOUND[r.id]).length;
-  document.getElementById("tcount").textContent = rows.length + " of " + REG.rows.length + " shown";
-  document.getElementById("tfound").textContent = foundN + " found by you";
-  const list = document.getElementById("trackerList");
-  if (!rows.length){
-    list.innerHTML = '<p class="empty">No markers match that search.</p>';
-    return;
-  }
-  list.innerHTML = '<table><thead><tr><th style="width:44px"></th><th>Marker</th><th>Region</th>'
-    + '<th>Confidence</th><th class="num">Verified</th></tr></thead><tbody>'
-    + rows.map(r => {
-        const on = FOUND[r.id] ? "checked" : "";
-        return '<tr><td><input type="checkbox" data-id="' + esc(r.id) + '" ' + on + '></td>'
-          + '<td>' + esc(r.game_name) + '</td>'
-          + '<td>' + esc(r.region) + '</td>'
-          + '<td><code>' + esc(r.confidence_pre) + '</code></td>'
-          + '<td class="num">' + (r.verdict ? esc(r.verdict) : "—") + '</td></tr>';
-      }).join("") + '</tbody></table>';
+function rowHTML(r) {
+  const conf = r.confidence_pre === "official"
+    ? '<span class="tagcell off">Official</span>'
+    : '<span class="tagcell">Community</span>';
+  return '<tr><td><input type="checkbox" data-id="' + esc(r.id) + '"' + (FOUND[r.id] ? " checked" : "") + '></td>'
+    + '<td class="nm">' + esc(r.game_name) + '</td>'
+    + '<td class="rg">' + esc(r.region) + '</td>'
+    + '<td>' + conf + '</td>'
+    + '<td class="num rg">' + (r.verdict ? esc(r.verdict) : "—") + '</td></tr>';
 }
 
-async function load(){
-  try { REG = await (await fetch("data/register.json")).json(); } catch(e){}
-  try { COR = await (await fetch("data/corrections.json")).json(); } catch(e){}
+function render() {
+  if (!REG) return;
+  const q = ($("q").value || "").toLowerCase().trim();
+  const reg = $("freg").value;
+  const rows = REG.rows.filter(r =>
+    (!reg || r.region === reg) &&
+    (!q || (r.game_name + " " + r.region + " " + r.id).toLowerCase().includes(q))
+  );
+  const found = REG.rows.filter(r => FOUND[r.id]).length;
+  $("tcount").textContent = rows.length + " of " + REG.rows.length + " shown";
+  $("tfound").textContent = found + " found by you";
+  $("tfound").className = found ? "chip on" : "chip";
+  $("rows").innerHTML = rows.length
+    ? rows.map(rowHTML).join("")
+    : '<tr><td colspan="5" style="padding:34px;text-align:center;color:var(--faint)">No markers match that search.</td></tr>';
+}
+
+async function load() {
+  try { REG = await (await fetch("data/register.json")).json(); } catch (e) {}
+  try { COR = await (await fetch("data/corrections.json")).json(); } catch (e) {}
 
   const marks = COR ? COR.markers_registered : (REG ? REG.count : null);
-  document.getElementById("t_reg").textContent = fmt(marks);
-  document.getElementById("t_chk").textContent = COR ? fmt(COR.markers_checked) : "—";
-  document.getElementById("t_acc").textContent = COR ? pct(COR.prelaunch_accuracy) : "—";
-  document.getElementById("t_err").textContent =
-    (COR && COR.mean_position_error_m !== null) ? fmt(COR.mean_position_error_m) : "—";
+  $("s_reg").textContent = fmt(marks);
+  $("s_chk").textContent = COR ? fmt(COR.markers_checked) : "—";
+  $("s_acc").textContent = COR ? pct(COR.prelaunch_accuracy) : "—";
+  $("s_err").textContent = (COR && COR.mean_position_error_m !== null) ? fmt(COR.mean_position_error_m) : "—";
 
-  const state = document.getElementById("t_state");
-  state.textContent = (COR && COR.markers_checked > 0)
-    ? "verified · " + COR.markers_checked + " of " + COR.markers_registered + " markers checked"
-    : "register seeded · verification begins at launch";
-
-  if (COR){
-    const v = COR.verdicts;
-    document.getElementById("tallyTable").innerHTML =
-      '<table><thead><tr><th>Verdict</th><th class="num">Markers</th><th class="num">Share of checked</th></tr></thead><tbody>'
-      + ["Confirmed","Corrected","Debunked","Inconclusive"].map(k => {
-          const share = COR.markers_checked ? (v[k]/COR.markers_checked) : null;
-          return '<tr><td>' + k + '</td><td class="num">' + fmt(v[k]) + '</td><td class="num">' + pct(share) + '</td></tr>';
-        }).join("") + '</tbody></table>';
-  }
-
-  const c = document.getElementById("corPreview");
-  if (c) c.textContent = COR ? JSON.stringify({
-    markers_registered: COR.markers_registered,
-    markers_checked: COR.markers_checked,
-    verdicts: COR.verdicts,
-    prelaunch_accuracy: COR.prelaunch_accuracy,
-    correction_rate: COR.correction_rate,
-    mean_position_error_m: COR.mean_position_error_m
-  }, null, 2) : "unavailable";
-
-  const r = document.getElementById("regPreview");
-  if (r) r.textContent = REG ? JSON.stringify({
-    generated: REG.generated, count: REG.count,
-    schema: REG.schema, attribution: REG.attribution
-  }, null, 2) : "unavailable";
-
-  const sources = [
-    {d:"GTA VI Landmarks Data & map tiles", p:"gtadb.org", l:"CC BY 4.0", n:"2,198"},
-    {d:"GTA 6 map points", p:"mapheist.com", l:"CC BY 4.0", n:"94"},
-    {d:"Weekly GTA data feed", p:"grindmap.com", l:"CC BY 4.0", n:"—"}
-  ];
-  document.getElementById("srcRows").innerHTML = sources.map(s =>
-    '<tr><td>' + s.d + '</td><td>' + s.p + '</td><td><code>' + s.l + '</code></td><td class="num">' + s.n + '</td></tr>'
-  ).join("");
-
-  const g = (COR && COR.generated) || (REG && REG.generated);
-  if (g) document.getElementById("genline").textContent = "Register generated " + g + " UTC.";
-
-  if (REG){
-    const sel = document.getElementById("freg");
-    const regions = [...new Set(REG.rows.map(r => r.region))].sort();
-    sel.innerHTML = '<option value="">All regions</option>'
-      + regions.map(x => '<option value="' + esc(x) + '">' + esc(x) + '</option>').join("");
-    sel.addEventListener("change", renderTracker);
-    document.getElementById("q").addEventListener("input", renderTracker);
-    document.getElementById("resetBtn").addEventListener("click", () => { FOUND = {}; saveFound(); renderTracker(); });
-    document.getElementById("trackerList").addEventListener("change", e => {
+  if (REG) {
+    const off = REG.rows.filter(r => r.kind === "region").length;
+    $("s_regf").textContent = off + " regions · " + (REG.rows.length - off) + " places";
+    $("q").placeholder = "Search " + REG.rows.length + " markers — try Port Gellhorn";
+    const sel = $("freg");
+    sel.innerHTML = '<option value="">All regions</option>' +
+      [...new Set(REG.rows.map(r => r.region))].sort()
+        .map(x => '<option value="' + esc(x) + '">' + esc(x) + '</option>').join("");
+    sel.addEventListener("change", render);
+    $("q").addEventListener("input", render);
+    $("resetBtn").addEventListener("click", () => { FOUND = {}; save(); render(); });
+    $("rows").addEventListener("change", e => {
       const id = e.target && e.target.getAttribute && e.target.getAttribute("data-id");
       if (!id) return;
       if (e.target.checked) FOUND[id] = 1; else delete FOUND[id];
-      saveFound();
-      document.getElementById("tfound").textContent = REG.rows.filter(rr => FOUND[rr.id]).length + " found by you";
+      save();
+      const found = REG.rows.filter(r => FOUND[r.id]).length;
+      $("tfound").textContent = found + " found by you";
+      $("tfound").className = found ? "chip on" : "chip";
     });
-    renderTracker();
+    render();
   }
+  const g = (COR && COR.generated) || (REG && REG.generated);
+  if (g) $("genline").textContent = "Register generated " + g.slice(0, 16).replace("T", " ") + " UTC";
 }
 load();
 </script>
