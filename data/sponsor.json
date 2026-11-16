@@ -1,0 +1,31 @@
+{
+  "generated": "2026-11-16T16:20:00+00:00",
+  "product": "Leonida Verification Desk",
+  "tagline": "GTA 6 community map accuracy, verified in-game and published as data.",
+  "audience": {
+    "platforms": ["X @LeonidaVerdict", "Discord (report a find)", "web"],
+    "niche": "GTA 6 launch-week players, map and collectible hunters",
+    "stage": "pre-launch, live and indexing"
+  },
+  "deliverables": [
+    {"name": "Verified feed post", "desc": "A labelled claim (VERIFIED/UNVERIFIED/FALSE) with the discoverer credited", "unit": "post"},
+    {"name": "Recorded verdict", "desc": "One marker checked in-game with evidence and position error", "unit": "marker"},
+    {"name": "Dataset integration", "desc": "corrections.json consumed by a partner site, credited", "unit": "integration"},
+    {"name": "Launch-week sponsor slot", "desc": "Named sponsor in the daily verified digest", "unit": "week"}
+  ],
+  "metrics_available": [
+    "median minutes from discovery to verified post",
+    "debunk share (proves filtering, not repeating)",
+    "discoverers credited",
+    "corrections issued"
+  ],
+  "benchmarks": {
+    "newsletter_slot_under_5k_subs_usd": "150-300",
+    "note": "Independent benchmarks; your rates depend on measured reach."
+  },
+  "audience_data_sales_note": "Audience data is never sold. Sources are licensed CC BY 4.0 and credited in every payload.",
+  "attribution": [
+    "GTA VI Landmarks Data and GTA VI Map Tiles - gtadb.org, CC BY 4.0",
+    "GTA 6 map points - mapheist.com, CC BY 4.0"
+  ]
+}
