@@ -82,6 +82,9 @@
     padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
   footer{padding:44px 0 64px;color:var(--muted);font-size:13px}
   footer p{max-width:76ch;margin-bottom:10px}
+  .follow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:22px}
+  .follow .fl{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-right:4px}
+  .follow .btn{padding:9px 16px;font-size:13px}
   .rule{border-left:2px solid var(--warn);padding-left:16px;color:#cbbfa4;
     background:rgba(255,176,58,.05);border-radius:0 8px 8px 0;padding:14px 16px}
   .empty{color:var(--muted);font-style:italic;padding:20px 0}
@@ -96,6 +99,7 @@
       <a href="#method">Method</a>
       <a href="#tally">Tally</a>
       <a href="#data">Data</a>
+      <a href="feed.html">Verified feed</a>
       <a href="#licence">Licence</a>
     </nav>
   </div>
@@ -191,6 +195,13 @@
       </div>
     </div>
     <div class="card" style="margin-top:18px">
+      <h3>Verified feed</h3>
+      <p style="margin-bottom:14px">Discoveries checked in the game before they are posted.
+        Every claim labelled, every discoverer credited, viral fakes called out. No leaks,
+        no datamines.</p>
+      <p><a class="btn s" href="feed.html">Open the feed</a></p>
+    </div>
+    <div class="card" style="margin-top:18px">
       <h3>Rebuild it from source</h3>
       <p style="margin-bottom:14px">The register is generated, not hand-written. Pull the
         licensed community datasets and regenerate both payloads:</p>
@@ -220,6 +231,12 @@ python3 ingest.py --corrections</pre>
 
 <footer>
   <div class="wrap">
+    <div class="follow">
+      <span class="fl">Follow the desk</span>
+      <a class="btn s" href="https://x.com/LeonidaVerdict" rel="me noopener">X &middot; @LeonidaVerdict</a>
+      <a class="btn s" href="https://discord.gg/pEtktbUkYD" rel="noopener">Discord &middot; report a find</a>
+      <a class="btn s" href="feed.html">Verified feed</a>
+    </div>
     <p><strong>Leonida Verification Desk</strong> is an independent project. It is not
       affiliated with, endorsed by, sponsored by or associated with Rockstar Games,
       Take-Two Interactive or any of their subsidiaries. "Grand Theft Auto", "GTA",
@@ -257,10 +274,12 @@ async function load(){
     const v = cor.verdicts;
     t.innerHTML = `<table><thead><tr><th>Verdict</th><th class="num">Markers</th>
       <th class="num">Share of checked</th></tr></thead><tbody>
-      ${["Confirmed","Corrected","Debunked","Inconclusive"].map(k => {
-        const share = cor.markers_checked ? (v[k]/cor.markers_checked) : null;
-        return `<tr><td>${k}</td><td class="num">${fmt(v[k])}</td><td class="num">${pct(share)}</td></tr>`;
-      }).join("")}
+      ${
+        ["Confirmed","Corrected","Debunked","Inconclusive"].map(k => {
+          const share = cor.markers_checked ? (v[k]/cor.markers_checked) : null;
+          return `<tr><td>${k}</td><td class="num">${fmt(v[k])}</td><td class="num">${pct(share)}</td></tr>`;
+        }).join("")
+      }
       </tbody></table>`;
   }
 
